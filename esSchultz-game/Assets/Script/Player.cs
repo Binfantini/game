@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private float speed = 5;
     // componente animator
     public Animator animator;
+    private bool isJumping = false;
+    private float JumpForce = 8;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -32,8 +34,12 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
-        //verifica se a tecla A foi pressionada e o valor X da escala está positivo
-        if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        }
+            //verifica se a tecla A foi pressionada e o valor X da escala está positivo
+            if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(transform.localScale.x * - 1,
             transform.localScale.y, transform.localScale.z);
