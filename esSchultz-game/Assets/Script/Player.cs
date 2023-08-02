@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //variavel para o rigidBody
+    // variavel para o rigidBody
     private Rigidbody2D rig;
     //vetor da posicao Inicial do Player
     private Vector3 posInicial;
-    //variavel da velocidade
+    // variavel da velocidade
     private float speed = 5;
+    // componente animator
+    public Animator animator;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -22,6 +24,14 @@ public class Player : MonoBehaviour
     {
         rig.velocity = new Vector2(speed, rig.velocity.y);
         rig.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rig.velocity.y);
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
         //verifica se a tecla A foi pressionada e o valor X da escala está positivo
         if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0)
         {
