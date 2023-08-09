@@ -43,14 +43,33 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector3(transform.localScale.x * - 1,
             transform.localScale.y, transform.localScale.z);
-            //Debug.Log("Tecla A pressionada")
+            Debug.Log("Tecla A pressionada");
         }
         //verifica se a tecla D foi pressionada e o valor X da escala está negativo
         if (Input.GetKeyDown(KeyCode.D) && transform.localScale.x < 0)
         {
             transform.localScale = new Vector3(transform.localScale.x * - 1,
             transform.localScale.y, transform.localScale.z);
-            //Debug.Log("Tecla D pressionada")
+            Debug.Log("Tecla D pressionada");
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Verifica se a colisão foi com a tag "line"
+        if(collision.gameObject.CompareTag("Line"))
+        {
+            //Retorna o personagem para a posição incial]
+            Debug.Log("Morri");
+            transform.position = posInicial;
+        }
+
+        //Verifica se a colisão foi com a tag "checkpoint"
+        if (collision.gameObject.CompareTag("Line"))
+        {
+            //Modifica a posição incial para a posição do checkpoint
+            Debug.Log("Morri");
+            posInicial =  collision.gameObject.transform.position;
+        }
+    }
+
 }
