@@ -13,6 +13,7 @@ public class Ground : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
+            player.isJumping = false;
             Debug.Log("COLIDIU!");
         }
     }
@@ -20,6 +21,7 @@ public class Ground : MonoBehaviour
     {
         if(collision.gameObject.layer == 6)
         {
+            player.isJumping = true;
             Debug.Log("PAROU DE COLIDIR!");
         }
     }

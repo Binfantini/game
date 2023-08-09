@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private float speed = 5;
     // componente animator
     public Animator animator;
-    private bool isJumping = false;
+    public bool isJumping = false;
     private float JumpForce = 8;
     void Start()
     {
